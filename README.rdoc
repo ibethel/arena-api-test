@@ -1,0 +1,13 @@
+== Arena API Testing
+
+Arena::Category.all
+
+Arena::Person.where({'lastName' => 'Lyric'})
+
+Arena::Person.where({'lastName' => 'Lyric', 'firstName' => 'Timothy'})
+
+Arena::Person.find(1297)
+
+Arena::Person.test_update_names(1297, "T_test", "A_test", "L_test", "A_test")
+Arena::Person.test_update_names(1297, "Timothy", "Andrew", "Lyric", "Andrew")
+
