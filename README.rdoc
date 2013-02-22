@@ -12,3 +12,6 @@ Arena::Person.test_update_names(1297, "T_test", "A_test", "L_test", "A_test")
 
 Arena::Person.test_update_names(1297, "Timothy", "Andrew", "Lyric", "Andrew")
 
+Arena::Person.test_create_person_unless_exists('lastName', 'Lyric', 'Andrew', 'Lyric')
+
+Arena::Person.test_create_person('Andrew', 'Lyric')
