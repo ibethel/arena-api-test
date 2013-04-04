@@ -3,7 +3,7 @@ require 'digest/md5'
 class Arena
 
   include HTTParty
-  base_uri 'https://arenatest.ibethel.org/api.svc'
+  base_uri 'https://arenadev.ibethel.org/api.svc'
 
   debug_output
 
@@ -23,7 +23,9 @@ class Arena
   end
 
   def self.create_api_session
-    response = post('/login', body: {'username' => 'chrisg', 'password' => 'changes3', 'api_key' => '45b5a3ef-209b-4e12-9157-89e3d1cdd4d9'})
+    response = post('/login', body: {'username' => 'chrisg', 'password' => 'changes3', 'api_key' => '878db40b-5daf-42ba-a155-a6a13d5da476'})
+    # response = post('/login', body: {'username' => 'chrisg', 'password' => 'changes3', 'api_key' => '45b5a3ef-209b-4e12-9157-89e3d1cdd4d9'})
+
     if response.code == 200
       response.parsed_response["ApiSession"]["SessionID"]
     else
@@ -37,11 +39,14 @@ class Arena
     raise "query parameter must be a hash" unless query.is_a? Hash # only supporting passing a Hash right now
     query.merge!({'api_session' => api_session})
 
+
     path_and_params = "#{path[1..-1]}?#{HashConversions.to_params(query)}".downcase
     puts "*"*80
     puts path_and_params
 
-    secret = "84f4861f-cc3b-445a-b4a0-dc83b59ad186"
+    secret = "34721ad1-f438-4ed8-8911-76ba79428593"
+    # secret = "84f4861f-cc3b-445a-b4a0-dc83b59ad186" # for person related transactions
+
     with_secret = "#{secret}_#{path_and_params}"
     puts with_secret
 
@@ -54,6 +59,7 @@ class Arena
     #query = {'api_session' => api_session, 'api_sig' => signature}
 
     query.merge!({'api_sig' => signature})
+    puts query
     query
   end
 

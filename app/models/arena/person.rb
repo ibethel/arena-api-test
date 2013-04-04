@@ -64,7 +64,9 @@ class Arena::Person < Arena
       <Person>
         <Addresses>
           <Address>
-            <AddressID>2</AddressID>
+            <AddressID>141</AddressID>
+            <AddressTypeID>41</AddressTypeID>
+            <AddressTypeValue>Main/Home Address</AddressTypeValue>
             <City>Redding</City>
             <Country>US</Country>
             <Latitude>35.162344</Latitude>
@@ -73,6 +75,7 @@ class Arena::Person < Arena
             <Primary>true</Primary>
             <State>CA</State>
             <StreetLine1>2046 Charade Way Apt 1</StreetLine1>
+            <StreetLine2/>
           </Address>
         </Addresses>
         <Age>51</Age>
