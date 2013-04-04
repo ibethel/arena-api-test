@@ -15,3 +15,11 @@ Arena::Person.test_update_names(1297, "Timothy", "Andrew", "Lyric", "Andrew")
 Arena::Person.test_create_person_unless_exists('lastName', 'Lyric', 'Andrew', 'Lyric')
 
 Arena::Person.test_create_person('Andrew', 'Lyric')
+
+Arena::Contribution.list_batchtype
+
+Arena::Contribution.find(1)
+
+Arena::Contribution.where({'LastName' => 'Meisenholder'})
+
+Arena::Contribution.add_contribution_to_batch("15", "20.0000")
