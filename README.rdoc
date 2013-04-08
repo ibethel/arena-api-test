@@ -18,8 +18,14 @@ Arena::Person.test_create_person('Andrew', 'Lyric')
 
 Arena::Contribution.list_batchtype
 
+Arena::Contribution.add_batch
+
 Arena::Contribution.find(1)
+
+Arena::Contribution.find_batch(1)
 
 Arena::Contribution.where({'LastName' => 'Meisenholder'})
 
 Arena::Contribution.add_contribution_to_batch("15", "20.0000")
+
+Arena::Contribution.update_batch(1)
