@@ -4,6 +4,10 @@ class Arena::Contribution < Arena
     get_with_signature("/contribution/#{id}")
   end
 
+  def self.find_batch(id)
+    get_with_signature("/batch/#{id}")
+  end
+
   def self.where(query)
     # Example: Arena::Contribution.where({'LastName' => 'Meisenholder'}) - this will bring back contribution data
     get_with_signature('/contribution/list', {query: query})
@@ -65,15 +69,31 @@ class Arena::Contribution < Arena
   end
 
   def self.add_batch
-    # This is not working!!!
     data = <<-xml
-      <Batch>
-        <BatchId>9999</BatchId>
-        <BatchLink>batch/9999</BatchLink>
-     </Batch>
+    <Batch>
+      <BatchDate>2013-04-08T00:00:00</BatchDate>
+      <BatchDateEnd>1900-01-01T00:00:00</BatchDateEnd>
+      <BatchName>New Batch</BatchName>
+      <BatchTypeName>Unknown</BatchTypeName>
+      <Finalized>True</Finalized>
+    </Batch>
     xml
 
     post_with_signature("/batch/add", {body: data})
+  end
+
+  def self.update_batch(batch_id)
+    data = <<-xml
+    <Batch>
+      <BatchDate>2013-04-08T00:00:00</BatchDate>
+      <BatchDateEnd>1900-01-01T00:00:00</BatchDateEnd>
+      <BatchName>Updated Batch</BatchName>
+      <BatchTypeName>DinersClub</BatchTypeName>
+      <Finalized>False</Finalized>
+    </Batch>
+    xml
+
+    post_with_signature("/batch/#{batch_id}/update", {body: data})
   end
 
 end
