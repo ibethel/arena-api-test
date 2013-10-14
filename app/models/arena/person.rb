@@ -1,11 +1,12 @@
 class Arena::Person < Arena
 
   def self.find(id)
+    # example: Arena::Person.find(1297)
     get_with_signature("/person/#{id}")
   end
 
   def self.where(query)
-    # example {'lastName' => 'Lyric'}
+    # example: Arena::Person.where({"lastName" => "Lyric", "firstName" => "Timothy"})
     get_with_signature("/person/list",{query: query})
   end
 
@@ -23,6 +24,7 @@ class Arena::Person < Arena
   end
 
   def self.test_update_names(id, first, middle, last, nick)
+    # example: 
     data = <<-xml
       <Person>
         <FirstName>#{first}</FirstName>
@@ -40,7 +42,7 @@ class Arena::Person < Arena
     # param1 = 1st paramter needed for the GET/person/list call - example - lastName to search on Last Name, firstName to search on FIrst Name
     # param2 = 2nd parameter needed for the GET/person/list call - example - if param1 is lastName, then param2 would be the actual last name you are searching for
     response = where({"#{param1}" => "#{param2}"})
-
+    
     if response.parsed_response.to_s == "{\"PersonListResult\"=>{\"Persons\"=>nil}}"
       test_create_person(first, last)
 
@@ -60,6 +62,8 @@ class Arena::Person < Arena
     # Example command line call: Arena::Person.test_create_person('Andrew', 'Lyric')
     # Address portion of XML matches API documentation provided but is generating error: Cannot insert the value NULL into column 'address_type_luid'
     # Get Successful insert of data if Address is removed from XML
+    # puts "$"*80
+    # puts "first #{first} last #{last}"
     data = <<-xml
       <Person>
         <Addresses>
@@ -108,6 +112,7 @@ class Arena::Person < Arena
   end
 
   def self.test_update(person_id, firstname, middlename, lastname, nickname)
+    # example: Arena::Person.test_update(1297, 'F_test', 'M_test', 'L_test', 'N_test')
     data = <<-xml
       <Person>
         <ActiveMeter>0</ActiveMeter>

@@ -23,8 +23,7 @@ class Arena
   end
 
   def self.create_api_session
-    response = post('/login', body: {'username' => 'chrisg', 'password' => 'changes3', 'api_key' => '878db40b-5daf-42ba-a155-a6a13d5da476'})
-    # response = post('/login', body: {'username' => 'chrisg', 'password' => 'changes3', 'api_key' => '45b5a3ef-209b-4e12-9157-89e3d1cdd4d9'})
+    response = post('/login', body: {'username' => 'sami.makhuli@ibethel.org', 'password' => 'jcsrm#01', 'api_key' => '3d0635bc-63a8-42af-a47d-84b12b2e9866'})
 
     if response.code == 200
       response.parsed_response["ApiSession"]["SessionID"]
@@ -45,7 +44,6 @@ class Arena
     puts path_and_params
 
     secret = "34721ad1-f438-4ed8-8911-76ba79428593"
-    # secret = "84f4861f-cc3b-445a-b4a0-dc83b59ad186" # for person related transactions
 
     with_secret = "#{secret}_#{path_and_params}"
     puts with_secret
